@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI/ML Class Study Hub</title>
+  <meta name="description" content="AI/ML Class Study Hub - Notes, Assignments, PYQs and Resources">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Segoe UI,Arial,sans-serif;background:#f5f7fb;color:#172033;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e7eaf0}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;font-size:19px;color:#172033;display:flex;align-items:center;gap:10px}
+    .logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#5b5ce2,#7c3aed);display:grid;place-items:center;color:#fff;font-size:21px;box-shadow:0 8px 22px #5b5ce233}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{font-size:14px;font-weight:650;color:#586174}
+    nav a:hover{color:#5b5ce2}
+    .menu{display:none;border:0;background:#eef0ff;padding:10px;border-radius:10px;font-size:20px}
+    .hero{padding:78px 0 55px;background:radial-gradient(circle at 85% 20%,#ddd9ff 0,transparent 30%),linear-gradient(135deg,#eef0ff,#fff)}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:45px;align-items:center}
+    .badge{display:inline-block;padding:7px 13px;background:#e8e8ff;color:#5147c7;border-radius:999px;font-size:13px;font-weight:750;margin-bottom:18px}
+    h1{font-size:clamp(38px,6vw,65px);line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
+    .gradient{background:linear-gradient(90deg,#5147c7,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:650px;color:#5e687b;font-size:17px;margin-bottom:28px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:750;font-size:14px;transition:.2s}
+    .primary{background:#5147c7;color:#fff;box-shadow:0 10px 25px #5147c733}
+    .primary:hover{transform:translateY(-2px)}
+    .secondary{background:#fff;border:1px solid #dfe3ec;color:#30384a}
+    .hero-card{background:#fff;border:1px solid #e4e7ef;border-radius:25px;padding:24px;box-shadow:0 25px 60px #25345a14}
+    .hero-card h3{margin-bottom:16px}
+    .mini{display:flex;align-items:center;gap:13px;padding:13px;border-radius:14px;background:#f7f8fc;margin:9px 0}
+    .mini-icon{width:38px;height:38px;border-radius:11px;background:#e9e8ff;display:grid;place-items:center}
+    .mini strong{display:block;font-size:14px}.mini span{font-size:12px;color:#7a8292}
+    section{padding:70px 0}
+    .section-head{text-align:center;margin-bottom:32px}
+    .section-head h2{font-size:32px;letter-spacing:-.7px}
+    .section-head p{color:#697286;margin-top:7px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;border:1px solid #e5e8ef;border-radius:20px;padding:23px;transition:.2s;box-shadow:0 10px 35px #25345a0b}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 45px #25345a14}
+    .card-icon{width:50px;height:50px;border-radius:15px;background:#eef0ff;display:grid;place-items:center;font-size:24px;margin-bottom:15px}
+    .card h3{font-size:19px;margin-bottom:6px}.card p{font-size:14px;color:#697286;margin-bottom:17px}
+    .card a{display:inline-block;color:#5147c7;font-weight:800;font-size:13px}
+    .wide{grid-column:span 2}
+    .updates{background:#fff;border:1px solid #e5e8ef;border-radius:20px;overflow:hidden}
+    .update{display:flex;gap:16px;padding:18px 21px;border-bottom:1px solid #edf0f4}.update:last-child{border:0}
+    .dot{width:10px;height:10px;border-radius:50%;background:#5147c7;margin-top:8px;flex:none}
+    .update strong{font-size:14px}.update p{font-size:13px;color:#697286}.date{font-size:11px;color:#9299a8;margin-left:auto;white-space:nowrap}
+    .request{background:linear-gradient(135deg,#191d35,#332a67);color:#fff;border-radius:26px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .request p{color:#d2d4e0;margin-top:7px}.request .secondary{background:#fff;border:0}
+    footer{background:#171b2d;color:#d9dbea;padding:32px 0}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer small{color:#9298ad}
+    .search-wrap{max-width:650px;margin:0 auto 25px}.search{width:100%;padding:15px 18px;border:1px solid #dfe3ec;border-radius:14px;font-size:15px;outline:none}.search:focus{border-color:#7b74e8;box-shadow:0 0 0 4px #5147c714}
+    .hidden{display:none}
+    @media(max-width:850px){nav{display:none}.menu{display:block}.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.wide{grid-column:span 2}}
+    @media(max-width:560px){.hero{padding-top:55px}.grid{grid-template-columns:1fr}.wide{grid-column:span 1}section{padding:55px 0}.request{padding:28px;display:block}.request .buttons{margin-top:20px}h1{letter-spacing:-1.5px}.date{display:none}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><span class="logo">🤖</span> AI/ML Study Hub</a>
+    <nav>
+      <a href="#subjects">Subjects</a>
+      <a href="#assignments">Assignments</a>
+      <a href="#notes">Notes</a>
+      <a href="#updates">Updates</a>
+      <a href="#request">Request</a>
+    </nav>
+    <button class="menu" onclick="alert('Use the buttons below to navigate on mobile.')">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">🎓 B.Tech AI/ML • Made By: CR of Section C </span>
+      <h1>Learn. Share.<br><span class="gradient">Grow Together.</span></h1>
+      <p>One organized place for our class notes, assignments, practicals, previous questions, important updates and useful learning resources.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#subjects">📚 Explore Material</a>
+        <a class="btn secondary" href="#updates">📢 Class Updates</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📌 Quick Access</h3>
+      <a class="mini" href="#subjects"><span class="mini-icon">📚</span><strong>Subjects</strong><span>All subject resources</span></a>
+      <a class="mini" href="#assignments"><span class="mini-icon">📝</span><strong>Assignments</strong><span>Subject-wise files</span></a>
+      <a class="mini" href="#notes"><span class="mini-icon">📖</span><strong>Notes & PYQs</strong><span>Exam preparation</span></a>
+      <a class="mini" href="#request"><span class="mini-icon">💡</span><strong>Request Material</strong><span>Need something? Ask here</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="subjects">
+  <div class="container">
+    <div class="section-head"><h2>📚 Explore Subjects</h2><p>Open the relevant Google Drive folder.</p></div>
+    <div class="search-wrap"><input id="search" class="search" placeholder="🔍 Search a subject..." oninput="filterCards()"></div>
+    <div class="grid" id="subjectGrid">
+      <article class="card searchable"><div class="card-icon">🤖</div><h3>AI Fundamentals</h3><p>Notes, assignments, important questions and resources.</p><a href="https://drive.google.com/drive/folders/1umS3kLZnNIssu9VObWPLLFq4q_PBiPuz" target="_View Notes">Open Drive →</a></article>
+      <article class="card searchable"><div class="card-icon">💻</div><h3>C++ Programming</h3><p>Programs, practicals, notes and assignments.</p><a href="https://drive.google.com/drive/folders/1XYImXc70bBD7JIE_4I0-s1w7RU8EIECN" target="View Notes">Open Drive →</a></article>
+      <article class="card searchable"><div class="card-icon">🌐</div><h3>Web Designing</h3><p>HTML, CSS, practicals, notes and assignments.</p><a href="https://drive.google.com/drive/folders/1P-Mi2r428LcHuKWGBNra2haK_4TBeUCx" target="View Notes">Open Drive →</a></article>
+      <article class="card searchable"><div class="card-icon">🌱</div><h3>Environmental Studies</h3><p>Unit-wise notes, assignments and important questions.</p><a href="https://drive.google.com/drive/folders/1jdnE49PWNGXhe_NncK6b051gg8mgMznQ" target="View Notes">Open Drive →</a></article>
+      <article class="card searchable"><div class="card-icon">📐</div><h3>Quantum Physics</h3><p>Formulas, solved questions, notes and practice material.</p><a href="https://drive.google.com/drive/folders/1u-P-MqLGeGN-qZI3NVr_Sh97XDsdbS1i" target="View Notes">Open Drive →</a></article>
+      <article class="card searchable"><div class="card-icon">📦</div><h3>Operating System</h3><p>Notes, assignments and important questions.</p><a href="YOUR_OPERATING_SYSTEM_DRIVE_LINK" target="_blank">Open Drive →</a></article>
+        <article class="card searchable"><div class="card-icon">📊</div><h3>Aptitude</h3><p>Notes, assignments and practicals.</p><a href="YOUR_LINUX_ADMINISTRATION_DRIVE_LINK" target="_blank">Open Drive →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="assignments">
+  <div class="container">
+    <div class="section-head"><h2>📝 Assignments Center</h2><p>Keep submissions and assignment material organized.</p></div>
+    <div class="grid">
+      <article class="card"><div class="card-icon">🤖</div><h3>AI Assignments</h3><p>All AI/ML assignment files.</p><a href="https://drive.google.com/drive/folders/1rBntN_Vanl_E50eqJ_vFXWIcrup7uXKV" target="_blank">View Assignments →</a></article>
+      <article class="card"><div class="card-icon">💻</div><h3>C++ Assignments</h3><p>Programming questions and practical work.</p><a href="https://drive.google.com/drive/folders/1CT5pPvSu-2xyC_SRpDlmSOFf9XP6VmIO" target="_blank">View Assignments →</a></article>
+      <article class="card"><div class="card-icon">🌐</div><h3>Web Assignments</h3><p>HTML/CSS and web designing work.</p><a href="https://drive.google.com/drive/folders/1kJENlQTRJDW_cdcuHDBowI2qFQ_NXLNm" target="_blank">View Assignments →</a></article>
+      <article class="card"><div class="card-icon">🌱</div><h3>EVS Assignments</h3><p>Environmental studies assignments and projects.</p><a href="https://docs.google.com/document/d/19JKXglY4a01rVLjIzB27EIQ8Ns5NgVrZ/edit?usp=drivesdk&ouid=110591802927126277679&rtpof=true&sd=true" target="_View Assignment">View Assignments →</a></article>
+      <article class="card"><div class="card-icon">📐</div><h3>Quantum Physics Assignments</h3><p>Practice problems and assignments.</p><a href="https://drive.google.com/drive/folders/1jMUMueuhy98KhLcHK_3qDOqmyqOrzGYM" target="_blank">View Assignments →</a></article>
+      <article class="card"><div class="card-icon">📦</div><h3>Operating System Assignments</h3><p>Submit your assignments here.</p><a href="https://drive.google.com/drive/folders/1O9k1Ww3UFaz9UVCpqb1qoTcnImeEFkBj" target="_blank">Submit →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="container">
+    <div class="section-head"><h2>📖 Notes & Resources</h2><p>Study material for regular learning and exams.</p></div>
+    <div class="grid">
+      <article class="card"><div class="card-icon">📖</div><h3>Class Notes</h3><p>Unit-wise notes for all subjects.</p><a href="YOUR_NOTES_LINK" target="_blank">Open Notes →</a></article>
+      <article class="card"><div class="card-icon">📑</div><h3>Previous Questions</h3><p>Previous papers and practice questions.</p><a href="YOUR_PYQ_LINK" target="_blank">Open PYQs →</a></article>
+      <article class="card"><div class="card-icon">🔗</div><h3>Useful Resources</h3><p>Helpful websites, videos and learning resources.</p><a href="YOUR_RESOURCES_LINK" target="_blank">Open Resources →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="updates">
+  <div class="container">
+    <div class="section-head"><h2>📢 Class Updates</h2><p>Important announcements for everyone.</p></div>
+    <div class="updates">
+      <div class="update"><span class="dot"></span><div><strong>Welcome to the Study Hub!</strong><p>All important academic material will be organized here.</p></div><span class="date">09 Sep 2026</span></div>
+      <div class="update"><span class="dot"></span><div><strong>Material Uploads</strong><p>New notes and assignments will be added as they are verified.</p></div><span class="date">Update regularly</span></div>
+      <div class="update"><span class="dot"></span><div><strong>Need a resource?</strong><p>Use the Request Material button below.</p></div><span class="date">Anytime</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="request">
+  <div class="container">
+    <div class="request">
+      <div><h2>💡 Can't find something?</h2><p>Tell us what material you need and we'll try to add it.</p></div>
+      <div class="buttons"><a class="btn secondary" href="https://www.linkedin.com/in/monish-malik-79289a428?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_CR Contact">📝 Request Material</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div><strong>🤖 AI/ML CLASS STUDY HUB</strong><br><small>Learn • Share • Grow Together</small></div>
+    <div><large>Managed by Class Representative</large><br><strong>MONISH MALIK</strong></div>
+  </div>
+</footer>
+
+<script>
+function filterCards(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.searchable').forEach(card=>{
+    card.classList.toggle('hidden',!card.innerText.toLowerCase().includes(q));
+  });
+}
+</script>
+</body>
+</html>
